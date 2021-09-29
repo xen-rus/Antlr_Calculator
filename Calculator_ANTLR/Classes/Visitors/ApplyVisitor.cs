@@ -25,7 +25,7 @@ namespace Calculator_ANTLR.Classes.Visitors
         public override double VisitUMS([NotNull] CalcGrammerParser.UMSContext context)
         {
            
-            return DoubleRigeonConverter(context.GetText());
+            return DoubleRegionConverter(context.GetText());
         }
 
         public override double VisitMULDGRP([NotNull] CalcGrammerParser.MULDGRPContext context)
@@ -56,7 +56,7 @@ namespace Calculator_ANTLR.Classes.Visitors
 
         public override double VisitNUM([NotNull] NUMContext context)
         {
-            var info = DoubleRigeonConverter(context.GetText());
+            var info = DoubleRegionConverter(context.GetText());
                 return info;
 
         }
@@ -85,7 +85,9 @@ namespace Calculator_ANTLR.Classes.Visitors
               _ => 0,
           };
 
-        private double DoubleRigeonConverter( string text)
+
+        //For Double value
+        private double DoubleRegionConverter( string text)
         {
             double val;
            if(!double.TryParse(text,out val))
