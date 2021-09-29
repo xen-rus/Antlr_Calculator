@@ -12,28 +12,36 @@ namespace Calculator_ANTLR
     {
         static void Main(string[] args)
         {
-           
-            while(true)
+            if (args.Length > 0)
+            { 
+                for (int i = 0; i < args.Length; i++)
+                    Calculate(args[i]);
+            }
+            else
             {
-                Console.WriteLine("Input expression or 0 to exit");
-                try
+                while (true)
                 {
-                    string Exp = Console.ReadLine();
+                    Console.WriteLine("Input expression or 0 to exit");
+                    try
+                    {
+                        string Exp = Console.ReadLine();
+                        if (Exp == "0")
+                            break;
 
-                    if (Exp == "0")
-                        break;
-
-                    AntlrCalcuator calcuator = new AntlrCalcuator();
-
-                    Console.WriteLine($"result = " + calcuator.Calculate(Exp));
+                        Calculate(Exp);
+                    }
+                    catch (ArgumentException arg)
+                    {
+                        Console.WriteLine(arg.Message);
+                    }
                 }
-                catch (ArgumentException arg)
-                {
-                    Console.WriteLine(arg.Message);
-                }
-            } 
+            }
+        }
 
-
+        static void Calculate(string args)
+        {
+            AntlrCalcuator calcuator = new AntlrCalcuator();
+            Console.WriteLine($"result = " + calcuator.Calculate(args));
 
         }
     }
