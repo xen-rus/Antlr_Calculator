@@ -26,7 +26,7 @@ namespace Calculator_ANTLR.Classes
             parser.RemoveErrorListeners();
             parser.AddErrorListener(new ThrowingErrorListener<IToken>());
 
-            //Create pasetree and calculate           
+            //Create parsetree and calculate           
             var info = parser.start();
             var visitor = new ApplyVisitor().Visit(info);
 
