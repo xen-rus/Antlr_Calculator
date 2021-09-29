@@ -12,7 +12,7 @@ namespace Calculator_ANTLR.Classes
         public void SyntaxError([NotNull] IRecognizer recognizer, [Nullable] TSymbol offendingSymbol, int line, int charPositionInLine, [NotNull] string msg, [Nullable] RecognitionException e)
         {
             throw (new ArgumentException(($"line {line}:{charPositionInLine} {msg}")));
-            //Console.WriteLine($"line {line}:{charPositionInLine} {msg}");
+
         }
 
     }
